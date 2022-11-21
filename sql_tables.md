@@ -53,3 +53,8 @@ CREATE TABLE `mysqllearn`.`alarm_manager` (
 `prep_time` VARCHAR(45) NULL,
 `check_time` VARCHAR(45) NULL,
 PRIMARY KEY (`id`));
+
+ALTER TABLE `mysqllearn`.`alarm_manager` 
+ADD COLUMN `interupt` TINYINT NULL AFTER `check_time`,
+CHANGE COLUMN `prep_time` `prep_time` TIMESTAMP NULL DEFAULT NULL ,
+CHANGE COLUMN `check_time` `check_time` TIMESTAMP NULL DEFAULT NULL ;
