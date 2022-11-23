@@ -31,6 +31,8 @@ routine_body:
     Valid SQL routine statement
 
 ```
+
+```SQL
 DELIMITER //
 
 CREATE FUNCTION  FCalcPriceSalesTaxWhileLoop ( startingValue FLOAT )
@@ -68,3 +70,54 @@ RETURN (totalPrice);
 END//
 DELIMITER ;
 
+
+
+DELIMITER $$
+CREATE FUNCTION CalculateSaleTaxOnly(
+	payment DECIMAL(10,2)
+) 
+RETURNS  DECIMAL(10,2)
+DETERMINISTIC
+BEGIN
+    DECLARE totalPrice DECIMAL(10,2);
+    IF payment > 0 THEN
+		SET totalPrice = payment * 0.13;
+    ELSEIF payment < 0 THEN
+        SET totalPrice = payment;
+    END IF;
+	RETURN (totalPrice);
+END$$
+DELIMITER ;
+
+-- USE FUNCTION IN A QUERY
+SELECT CalculateSaleTaxOnly(amount) FROM payment LIMIT 10;
+
+
+
+SELECT * FROM film LIMIT 10;
+
+DELIMITER //
+CREATE PROCEDURE sp_get_movies()
+BEGIN
+  SELECT title, description, release_year, rating
+  FROM film;
+END //
+DELIMITER ;
+
+
+USE `sakila`;
+DROP PROCEDURE IF EXISTS `sp_get_customer_by_rating`
+
+DELIMITER //
+USE `sakila` //
+
+CREATE PROCEDURE `sp_get_customer_by_rating`(IN rating varchar(50))
+BEGIN
+  SELECT title, description, release_year, rating
+  FROM film;
+END //
+DELIMITER ;
+
+CALL sp_get_customer_by_rating('R')
+
+```
