@@ -120,4 +120,54 @@ DELIMITER ;
 
 CALL sp_get_customer_by_rating('R')
 
+
+-- USE sakila;
+
+-- SELECT * FROM actor;
+-- SELECT * FROM film;
+-- SELECT * FROM film_actor;
+-- SELECT 
+-- 	a.first_name AS FirstName, 
+-- 	a.last_name AS LastName
+-- FROM 
+-- 	actor a;
+
+SELECT 
+	title, 
+    f.film_id as id, 
+    fa.actor_id as actor_id,
+	a.first_name AS FirstName, 
+	a.last_name AS LastName
+FROM 
+	film f,
+	film_actor fa,
+	actor a
+WHERE
+	f.film_id = fa.film_id AND fa.actor_id = a.actor_id;
+
+
+
+-- Make into view vw_film_and_actors 
+CREATE OR REPLACE ALGORITHM = TEMPTABLE VIEW vw_film_and_actors (title, filmId, actorId, firstName, lastName) AS
+SELECT 
+	title, 
+    f.film_id as  filmId, 
+    fa.actor_id as actorId,
+	a.first_name AS firstName, 
+	a.last_name AS lastName
+FROM 
+	film f,
+	film_actor fa,
+	actor a
+WHERE
+	f.film_id = fa.film_id AND fa.actor_id = a.actor_id;
+
+
+-- use view vw_film_and_actors 
+SELECT 
+	title, firstName 
+FROM 
+	vw_film_and_actors
+WHERE
+	actorId=1;
 ```
