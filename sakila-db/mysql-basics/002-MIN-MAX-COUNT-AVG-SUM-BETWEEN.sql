@@ -30,3 +30,8 @@ FROM payment;
 SELECT count(payment_id) AS NumberOfSales, SUM(amount) AS RentalRevenue, AVG(amount) AS AvgRentalRevenuePerCustomer 
 FROM payment
 WHERE amount <> 0;
+
+-- COUNT SUM and AVG WHERE BETWEEN
+SELECT count(payment_id) AS NumberOfSales, SUM(amount) AS RentalRevenue, AVG(amount) AS AvgRentalRevenuePerCustomer 
+FROM payment
+WHERE amount BETWEEN 1.00 AND 2.00;
