@@ -9,6 +9,8 @@ END$$
 DELIMITER ;
 CALL sp_square_root(144);
 
+
+
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS sp_add_two_numbers$$
@@ -21,3 +23,15 @@ END$$
 DELIMITER ;
 
 CALL sp_add_two_numbers(1, 3);
+
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS sp_square_root$$
+CREATE PROCEDURE sp_square_root(inputNumber INT, OUT out_number FLOAT)
+BEGIN
+ SET out_number=SQRT(inputNumber);
+END$$
+DELIMITER ;
+
+CALL sp_square_root(144, @out_value);
+SELECT@out_value;
