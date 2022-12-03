@@ -1,0 +1,11 @@
+-- USE sakila;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTs sp_HelloWorld$$
+CREATE PROCEDURE sp_HelloWorld()
+BEGIN
+	SELECT "HELLO WORLD";
+END$$
+DELIMITER ;
+
+CALL sp_HelloWorld();
