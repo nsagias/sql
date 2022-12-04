@@ -1,6 +1,6 @@
-DELIMITER $$
+DELIMITER //
 
-DROP PROCEDURE IF EXISTS sp_variable_and_types$$
+DROP PROCEDURE IF EXISTS sp_variable_and_types//
 CREATE PROCEDURE sp_variable_and_types()
 BEGIN
 	DECLARE a_tiny_int tinyint;   	/* 1 byte , values between 0 to 255 */
@@ -23,5 +23,5 @@ BEGIN
 	SET an_integer=20;
     SET a_big_integer=POWER(an_integer, 3);
     
-END$$
+END//
 DELIMITER ;

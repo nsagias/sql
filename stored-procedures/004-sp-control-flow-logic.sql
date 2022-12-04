@@ -1,6 +1,6 @@
-DELIMITER $$
+DELIMITER //
 
-DROP PROCEDURE IF EXISTS sp_control_flow$$
+DROP PROCEDURE IF EXISTS sp_control_flow//
 CREATE PROCEDURE sp_control_flow(
 IN original_price DECIMAL(8,2), 
 	OUT discounted_price DECIMAL(8,2)
@@ -13,7 +13,7 @@ BEGIN
 	ELSE 
 		SET discounted_price=original_price;
 	END IF;
-END $$
+END //
 
 DELIMITER ;
 

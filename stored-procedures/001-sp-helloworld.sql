@@ -1,11 +1,11 @@
 -- USE sakila;
 
-DELIMITER $$
-DROP PROCEDURE IF EXISTs sp_HelloWorld$$
+DELIMITER //
+DROP PROCEDURE IF EXISTs sp_HelloWorld//
 CREATE PROCEDURE sp_HelloWorld()
 BEGIN
 	SELECT "HELLO WORLD";
-END$$
+END//
 DELIMITER ;
 
 CALL sp_HelloWorld();

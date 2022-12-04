@@ -1,6 +1,6 @@
-DELIMITER $$
+DELIMITER //
 
-DROP PROCEDURE IF EXISTS basic_loop$$
+DROP PROCEDURE IF EXISTS basic_loop//
 CREATE PROCEDURE basic_loop()
 BEGIN
 	DECLARE counter INT 
@@ -12,7 +12,7 @@ BEGIN
 		END IF;
     END LOOP basic_loop_name;
     SELECT 'COUNTING TO TEN';
-END $$
+END //
 
 DELIMITER ;
 CALL basic_loop();
