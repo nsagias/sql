@@ -1,6 +1,6 @@
 DELIMITER //
 
-DROP PROCEDURE IF EXISTS basic_loop//
+DROP PROCEDURE IF EXISTS sp_basic_loop//
 CREATE PROCEDURE basic_loop()
 BEGIN
 	DECLARE counter INT 
@@ -15,4 +15,4 @@ BEGIN
 END //
 
 DELIMITER ;
-CALL basic_loop();
+CALL sp_basic_loop();

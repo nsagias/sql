@@ -1,8 +1,8 @@
 USE sakila;
 DELIMITER //
 
-DROP PROCEDURE IF EXISTS customer_sales//
-CREATE PROCEDURE customer_sales(
+DROP PROCEDURE IF EXISTS sp_customer_sales//
+CREATE PROCEDURE sp_customer_sales(
 	IN in_customer_id INT
 )
 	READS SQL DATA
@@ -16,4 +16,4 @@ BEGIN
 	SELECT CONCAT('Total sales for ', in_customer_id,' is ',total_sales);
 END //
 DELIMITER ;
-CALL customer_sales(2);
+CALL sp_customer_sales(2);
