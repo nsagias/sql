@@ -20,4 +20,24 @@ END//
 
 DELIMITER ;
 CALL sp_update_payment_bonus(1,'YES');
-SELECT * FROM payment;
+
+
+
+CREATE PROCEDURE sp_update_payment_bonus2(
+	IN in_payment_id INT,
+    IN in_bonus DECIMAL(8,2)
+)
+BEGIN
+	IF in_bonus < 0 OR in_bonus > 2.00THEN
+		SELECT "Cannot be negative or more than 2.00";
+	ELSE
+		UPDATE payment
+		SET bonus='YES'
+		WHERE payment_id=in_payment_id; 
+	END IF;
+END//
+
+DELIMITER ;
+CALL sp_update_payment_bonus2(4, 1.00);
+
+-- SELECT * FROM payment;
