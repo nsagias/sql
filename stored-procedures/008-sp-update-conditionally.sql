@@ -40,4 +40,26 @@ END//
 DELIMITER ;
 CALL sp_update_payment_bonus2(4, 1.00);
 
+DELIMITER //
+DROP PROCEDURE IF EXISTS sp_update_payment_bonus3//
+CREATE PROCEDURE sp_update_payment_bonus3(
+	IN in_payment_id INT,
+    IN in_bonus VARCHAR(5)
+)
+BEGIN
+	IF 
+       in_bonus NOT IN ('yes','YES', 'no', 'NO')
+    THEN
+		SELECT "Can only enter either one of the following YES, yes, NO, no";
+	ELSE
+		UPDATE payment
+		SET bonus=in_bonus
+		WHERE payment_id=in_payment_id; 
+	END IF;
+END //
+
+DELIMITER ;
+
+CALL sp_update_payment_bonus3(6,'yes');
+
 -- SELECT * FROM payment;
